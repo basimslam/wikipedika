@@ -1,4 +1,6 @@
 import React from 'react';
+import { ReactComponent as HeaderLine } from './header-line.svg';
+import { ReactComponent as SearchButton } from './search-button.svg';
 import './App.css';
 import { useState } from 'react';
 export default function Header(props){
@@ -14,13 +16,19 @@ export default function Header(props){
   };
 
     return (
-        <header className="App-header">
-        
-        <div className="search-bar-container">
-            <input className = "search-input" type="text" value= {inputValue}  name="query" onChange={handleChange}/>
-            <button className= "search-button"  onClick={handleSubmit} type="submit"></button>
-        </div>
-        
+        <header className="header-section">
+            <div className='app-header'>
+                <div className="search-bar-container">
+                    <input className = "search-input" placeholder='Search Here ' type="text" value= {inputValue}  name="query" onChange={handleChange}/>
+                    <SearchButton className= "search-button" alt="Search" onClick={handleSubmit}/>
+                </div>
+                <div className="navbar">
+                    <h3>Home</h3>
+                    <h3>Team</h3>
+                    <h3>About</h3>
+                </div>
+            </div>
+            <HeaderLine className='header-line'/>
       </header>
     );
 }
