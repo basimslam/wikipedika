@@ -10,19 +10,27 @@ function App() {
   async function handleInput(inputValue){
     const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 
-    const prompt = "Give a summary about"+ inputValue+ "in paragraphs" ;
+    const prompt = "Give a long summary about"+ inputValue+ "in paragraphs in pure text with no markup" ;
 
     const result = await model.generateContentStream(prompt);
     let text = '';
+
     for await (const chunk of result.stream) {
       const chunkText = chunk.text();
-      console.log(chunkText);
-      text += chunkText;
-      console.log(text);
-      setData(text)
-      
-    
-  }
+      const paragraphs = chunkText.split('\n'); // Split chunk text into paragraphs
+      for (const paragraph of paragraphs) {
+        const words = paragraph.split(/\s+/); // Split each paragraph into words
+        for (const word of words) {
+          console.log(word); // Print each word
+          text += word + ' '; // Add word to text
+          setData(text.trim()); // Update state with trimmed text
+          await new Promise(resolve => setTimeout(resolve, 30)); // Adjust delay as needed
+        }
+        text += '\n'; // Add newline character after each paragraph
+        setData(text.trim()); // Update state with trimmed text
+      }
+      text = text.slice(0, -2);
+    }
 
   }
   return (

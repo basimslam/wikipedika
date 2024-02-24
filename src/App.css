@@ -1,4 +1,9 @@
 
+::-webkit-scrollbar {
+  display: none;
+  
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -7,7 +12,9 @@
 }
 .App{
   background-color: #0D0D0D;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
+  padding-bottom: 10vh;
   
 }
 
@@ -28,9 +35,6 @@ display: flex;
   width: 60vw;
   height: 7vh;
   position: relative;
-  
- 
-
 }
 
 .search-input {
