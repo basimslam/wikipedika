@@ -48,6 +48,7 @@ display: flex;
   background-color: transparent; 
   border-radius: 8px;
   transform: skewX(-32deg); /* Parallelogram shape */
+  
 }
 
 .search-input::placeholder {
@@ -62,6 +63,15 @@ display: flex;
   height: 7.2vh;
   outline: none;
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  
+}
+
+.search-button:hover{
+  transform: scale(1.1);
+}
+.search-button:active{
+  transform: scale(0.8);
 }
 .navbar{
   padding-left: 14vw;

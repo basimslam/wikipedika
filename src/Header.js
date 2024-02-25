@@ -19,7 +19,7 @@ export default function Header(props){
         <header className="header-section">
             <div className='app-header'>
                 <div className="search-bar-container">
-                    <input className = "search-input" placeholder='Search Here ' type="text" value= {inputValue}  name="query" onChange={handleChange}/>
+                    <input className = "search-input" autoComplete='off' placeholder='Search Here ' type="text" value= {inputValue}  name="query" onChange={handleChange}/>
                     <SearchButton className= "search-button" alt="Search" onClick={handleSubmit}/>
                 </div>
                 <div className="navbar">
