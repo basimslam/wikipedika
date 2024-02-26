@@ -28,7 +28,15 @@
 display: flex;
 
 }
-
+.loading{
+  position: relative;
+  left: 40vw;
+  top: 18vh;
+  background-color: transparent;
+  color: transparent;
+  width: 20%;
+  height: 20%;
+}
 
 .search-bar-container {
   display: flex;

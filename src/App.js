@@ -9,7 +9,8 @@ function App() {
 
   async function handleInput(inputValue){
     const model = genAI.getGenerativeModel({ model: "gemini-pro"});
-
+    setData("loading");
+    
     const prompt = "Give a long summary about"+ inputValue+ "in paragraphs in pure text with no markup" ;
 
     const result = await model.generateContentStream(prompt);
@@ -36,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <Header handle={handleInput}/>
-      <Main  rdata = {data} />
+      <Main  data = {data} />
     </div>
   );
 }
