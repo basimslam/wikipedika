@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 
 export default function Markdown (props){
   return (
-      <ReactMarkdown>{props.markdown}</ReactMarkdown>
+      l
   );
 };
 

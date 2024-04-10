@@ -56,7 +56,6 @@ display: flex;
   background-color: transparent; 
   border-radius: 8px;
   transform: skewX(-32deg); /* Parallelogram shape */
-  
 }
 
 .search-input::placeholder {
@@ -94,8 +93,6 @@ display: flex;
   font-weight: 400;
   color: #B4B4B4;
   font-size: 1vw;
-  
-  
 }
 .header-line{
   width:90vw;
@@ -112,4 +109,32 @@ display: flex;
   background-color: #181717;
   border-radius: 8px;
 
+}
+.dropdown{
+  background-color:  #181717;
+  color: white;
+  margin: 5vw;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* App.css */
+
+
+.subtitle{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.subtitle button{
+  margin-bottom: 16px;
+  background-color: #2b2828;
+  color: white;
+  padding: 20px 50px;
+  border-radius: 5px;
+}
+.subtitle button:hover{
+  padding: 22px 51px;
 }
