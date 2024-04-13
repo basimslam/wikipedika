@@ -1,9 +1,10 @@
 import React from 'react';
-import { ReactComponent as HeaderLine } from './header-line.svg';
-import { ReactComponent as SearchButton } from './search-button.svg';
-import './App.css';
+import logo from '../assets/Logo.png';
+import Lottie from 'lottie-react';
+import './Header.css';
 import { useState } from 'react';
-
+import button from '../assets/button.json';
+import headerline from '../assets/header-line.svg';
 const Header = (props) => {
     const [inputValue, setInputValue] = useState('');
     const [searchClicked, setSearchClicked] = useState(false);
@@ -13,14 +14,21 @@ const Header = (props) => {
         setSearchClicked(true);
         props.handle(inputValue);
     };
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          handleSubmit(event);
+        }
+      };
+   
 
     const handleChange = (event) => {
         setInputValue(event.target.value);
     };
-
+    
     return (
         <header className="header-section">
             <div className='app-header'>
+                <img src={logo} alt="logo" className="logo" />
                 <div className="search-bar-container">
                     <input 
                         className="search-input" 
@@ -30,8 +38,20 @@ const Header = (props) => {
                         value={inputValue}  
                         name="query" 
                         onChange={handleChange}
+                        onKeyDown={handleKeyDown}
                     />
-                    <SearchButton className="search-button" onClick={handleSubmit}>Search</SearchButton>
+                     <Lottie
+                        className='button'
+                        initialSegment={[177, 177]}
+                        animationData={button}
+                        autoplay={false}
+                        loop={false}
+                        speed={1}
+                        style={{height: 170 }}
+                        onClick={handleSubmit}
+                      
+                    />
+                   
                 </div>
                 <div className="navbar">
                     <h3>Home</h3>
@@ -39,6 +59,7 @@ const Header = (props) => {
                     <h3>About</h3>
                 </div>
             </div>
+            <img src={headerline} className='headerline' />
         </header>
     );
 };

@@ -1,0 +1,53 @@
+
+.card{
+    padding: 20px;
+    color: white;
+    background-color: #181717;
+    margin-left: 2vw;
+    width: 22vw;
+    border-radius: 8px;
+    position: relative;
+    top: 1.9vh;
+    
+    
+}
+.detail{
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+    align-items: center;
+}
+.card-heading{
+    font-family: roboto;
+    font-size: 15px;
+    margin: 0;
+}
+.card-answer{
+    
+    margin: 0;
+    width: 15vw;
+    position: relative;
+    text-align: right;
+    margin-left: 5px;
+}
+
+
+.underline{
+    color: white;
+    width: 22vw;
+    position: relative;
+    top: -0.5vh;
+}
+
+.card-title{
+    font-family: roboto;
+    font-weight: 800;
+    font-size: 2vw;
+    text-align: center;
+    margin: 0;
+}
+.card-image{
+    padding-left: 25px;
+
+    width: 18vw;
+}

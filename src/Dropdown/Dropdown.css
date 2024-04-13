@@ -1,0 +1,49 @@
+.dropdown{
+    position: relative;
+    left: 22vw;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    
+  }
+  
+  
+  .subtitle{
+    display: flex;
+    flex-direction: column;
+    font-family: roboto;
+    
+  }
+  .sub-button{
+    cursor: pointer;
+  }
+  
+  .subtitle button{
+    margin-bottom: 16px;
+    
+    padding: 20px 50px;
+    border-radius: 5px;
+  }
+  .subtitle button:hover{
+    padding: 22px 51px;
+  }
+.sub-content{
+  margin-top: 1vw;
+  width: 67vw;
+  padding: 20px;
+  background-color: #181717 ;
+  border-radius: 8px;
+  margin-bottom: 1vw;
+  cursor: auto;
+}
+.bottom-heading{
+  margin-top: 10px;
+  font-weight: 800;
+  font-size: 2vw;
+}
+.dropdownline{
+  position: relative;
+  top: -0.5vh;
+  width: 43vw;
+  
+}

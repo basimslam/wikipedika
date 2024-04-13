@@ -1,0 +1,66 @@
+.logo{
+    position: relative;
+    width: 27vh;
+  }
+
+  .header-section {
+    padding-left: 5vw;
+    padding-top: 4vh;
+    color: white;
+  }
+
+  .app-header{
+  display: flex;
+  align-items: center;
+  }
+  
+  .search-bar-container {
+    padding-left: 3vw;
+    display: flex;
+    width: 45vw;
+    height: 7vh;
+    position: relative;
+  }
+  
+  .search-input {
+    padding-left: 1vw;
+    color:white ;
+    border-color:#B4B4B4 ;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #B4B4B4; /* Border color */
+    outline: none;
+    background-color: transparent; 
+    border-radius: 34px;
+  
+  }
+  
+  .search-input::placeholder {
+    color: white; /* Change the color of the placeholder text */
+  }
+  
+  .button {
+    position: relative;
+    top: -5.5vh;
+    left: -1.5vw;
+    cursor: pointer;
+  }
+  
+  .headerline{
+    width: 90vw;
+  }
+  
+  .navbar{
+    display: flex;
+    position: relative;
+    bottom: -1vh;
+  }
+
+  .navbar >h3{
+    font-family: abhaya-libre;
+    padding-left: 4vw;
+    font-size: 1.5vw;
+    font-weight: 400;
+    color: white;
+    
+  }
