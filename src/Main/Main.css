@@ -9,6 +9,8 @@
   }
 
 .main-content{
+    
+    position: relative;
     white-space: pre-line;
     margin-left: 5vw;
     padding: 20px;
@@ -19,14 +21,21 @@
     height: auto;
     font-size: 18px;
     
+    
 }
 .main-body{
     display: flex;
+    justify-content: end;
     
 }
-
-.contents{
+.fixed{
+    position: fixed;
+}
+.not-fixed{
     position: relative;
+}
+.contents{
+
     top: -2vh;
     left: 6vw;
     width: 20vw;

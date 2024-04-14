@@ -16,8 +16,8 @@ export default function Main(props){
     else{
         return (
             <div className="main-body">
-                <Contents titles={props.titles} />
-                <div><p className='main-content'>{props.data} </p></div>
+                <Contents scroll={props.scroll} titles={props.titles} />
+                <div className='main-content-container'><p className='main-content'>{props.data} </p></div>
                 
                 <Card details={props.details} topic = {props.topic} images = {props.images}/>
             </div>

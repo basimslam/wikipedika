@@ -8,7 +8,6 @@ export default function Dropdown(props) {
     const [contents, setContents] = useState({});
     const [dropResult, setDropResult] = useState([]);
 
-
     const handleSubtitleClick = async (subtitle) => {
         const model = props.genAI.getGenerativeModel({ model: "gemini-pro" });
         const prompt = `Give a long summary about the ${subtitle} relating to ${props.topic} in paragraphs in pure text with strictly no headings`;
@@ -56,7 +55,7 @@ export default function Dropdown(props) {
                 {props.dropResult.map((subtitle, index) => (
                     subtitle.trim().length > 0 && (
                         <div key={index} className='sub-button'>
-                            <div className='bottom-heading sub-button' onClick={() => handleSubtitleClick(subtitle)}>{subtitle.replace(/\*/g, '')}</div>
+                            <div id={index.toString()} className='bottom-heading sub-button' onClick={() => handleSubtitleClick(subtitle)}>{subtitle.replace(/\*/g, '')}</div>
                             <img src={dropdownline} alt='dropdownline' className='dropdownline sub-button'/>
                             {contents[subtitle] === "loading" ? (
                                 <DropPH/>
