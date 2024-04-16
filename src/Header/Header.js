@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import logo from '../assets/Logo.png';
 import Lottie from 'lottie-react';
 import './Header.css';
@@ -8,8 +8,10 @@ import headerline from '../assets/header-line.svg';
 const Header = (props) => {
     const [inputValue, setInputValue] = useState('');
     const [searchClicked, setSearchClicked] = useState(false);
+    const lottieRef = useRef();
 
     const handleSubmit = (e) => {
+        
         e.preventDefault();
         setSearchClicked(true);
         props.handle(inputValue);
@@ -47,8 +49,9 @@ const Header = (props) => {
                         autoplay={false}
                         loop={false}
                         speed={1}
-                        style={{height: 170 }}
+                        
                         onClick={handleSubmit}
+                        lottieRef={lottieRef}
                       
                     />
                    

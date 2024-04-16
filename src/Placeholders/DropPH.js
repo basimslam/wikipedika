@@ -6,9 +6,6 @@ const DropPH = () => {
             <div className='ph-text'></div>
             <div className='ph-text'></div>
             <div className='ph-text'></div>
-            <div className='ph-text'></div>
-            <div className='ph-text'></div>
-            <div className='ph-text'></div>
         </div>
     );
 };

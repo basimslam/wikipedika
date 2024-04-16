@@ -41,9 +41,10 @@
   
   .button {
     position: relative;
-    top: -5.5vh;
+    top: -5vh;
     left: -1.5vw;
     cursor: pointer;
+    height: 18vh;
   }
   
   .headerline{

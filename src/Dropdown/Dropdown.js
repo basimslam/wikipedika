@@ -9,45 +9,49 @@ export default function Dropdown(props) {
     const [dropResult, setDropResult] = useState([]);
 
     const handleSubtitleClick = async (subtitle) => {
-        const model = props.genAI.getGenerativeModel({ model: "gemini-pro" });
-        const prompt = `Give a long summary about the ${subtitle} relating to ${props.topic} in paragraphs in pure text with strictly no headings`;
-        
-        setContents(prevState => ({
-            ...prevState,
-            [subtitle]: "loading"
-        }));
-
-        const result = await model.generateContentStream(prompt);
-        let text = '';
-
-        for await (const chunk of result.stream) {
-            const chunkText = chunk.text();
-            const paragraphs = chunkText.split('\n');
-            for (const paragraph of paragraphs) {
-                const words = paragraph.split(/\s+/);
-                for (const word of words) {
-                    text += word + ' ';
-                    if (text.length> 700){
+        // Check if content for the subtitle is already loaded
+        if (!contents[subtitle]) {
+            const model = props.genAI.getGenerativeModel({ model: "gemini-pro" });
+            const prompt = `Give a long summary about the ${subtitle} relating to ${props.topic} in paragraphs in pure text with strictly no headings`;
+            
+            setContents(prevState => ({
+                ...prevState,
+                [subtitle]: "loading"
+            }));
+    
+            const result = await model.generateContentStream(prompt);
+            let text = '';
+    
+            for await (const chunk of result.stream) {
+                const chunkText = chunk.text();
+                const paragraphs = chunkText.split('\n');
+                for (const paragraph of paragraphs) {
+                    const words = paragraph.split(/\s+/);
+                    for (const word of words) {
+                        text += word + ' ';
+                        if (text.length> 300){
+                            setContents(prevState => ({
+                                ...prevState,
+                                [subtitle]: text.trim()
+                            }));
+                        }
+                        
+                        await new Promise(resolve => setTimeout(resolve, 30));
+                    }
+                    text += '\n';
+                    if (text.length> 300){
                         setContents(prevState => ({
                             ...prevState,
                             [subtitle]: text.trim()
                         }));
                     }
-                    
-                    await new Promise(resolve => setTimeout(resolve, 30));
                 }
-                text += '\n';
-                if (text.length> 700){
-                    setContents(prevState => ({
-                        ...prevState,
-                        [subtitle]: text.trim()
-                    }));
-                }
+                text = text.slice(0, -2);
+                
             }
-            text = text.slice(0, -2);
-            
         }
     };
+    
 
     return (
         <div className="dropdown">

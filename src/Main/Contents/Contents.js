@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import chevron from '../../assets/chevron-white.png';
+import chevronGreen from '../../assets/chevron.png';
 const Contents = (props) => {
     const titles = props.titles;
     const [isLoaded, setIsLoaded] = useState(false);
     const [isFixed, setIsFixed] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
     useEffect(() => {
         // Set a timeout to change the state after 1000 milliseconds (1 second)
         const timeout = setTimeout(() => {
@@ -34,6 +36,7 @@ const Contents = (props) => {
     
     const scrollToTarget = (id) => {
         console.log("scrolling to", id);
+        setSelectedItem(id);
         const targetElement = document.getElementById(id);
         if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth' });
@@ -49,8 +52,8 @@ const Contents = (props) => {
             <div className='subtitles'>
             {
             titles.map((title,index) => (
-                <div className='subtitle' onClick={() => scrollToTarget(index)}>
-                    <img src={chevron}/>
+                <div className={`subtitle ${selectedItem === index ? 'selected' : ''}`} onClick={() => scrollToTarget(index)}>
+                    <img src={selectedItem === index ? chevronGreen : chevron}/>
                     <p className='stitle'>{title}</p>
                 </div>
             

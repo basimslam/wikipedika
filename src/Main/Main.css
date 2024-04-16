@@ -23,6 +23,9 @@
     
     
 }
+.selected{
+    color: #8FFF00;
+}
 .main-body{
     display: flex;
     justify-content: end;
