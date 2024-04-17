@@ -12,7 +12,7 @@ export default function Dropdown(props) {
         // Check if content for the subtitle is already loaded
         if (!contents[subtitle]) {
             const model = props.genAI.getGenerativeModel({ model: "gemini-pro" });
-            const prompt = `Give a long summary about the ${subtitle} relating to ${props.topic} in paragraphs in pure text with strictly no headings`;
+            const prompt = `Give a long summary about the ${subtitle} relating to ${props.topic} in paragraphs in pure text with strictly NO headings`;
             
             setContents(prevState => ({
                 ...prevState,

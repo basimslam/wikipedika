@@ -11,6 +11,9 @@ const Header = (props) => {
     const lottieRef = useRef();
 
     const handleSubmit = (e) => {
+        if (lottieRef.current) {
+            lottieRef.current.playSegments([177, button.totalFrames]); // Start from 177th frame to the end
+          }
         
         e.preventDefault();
         setSearchClicked(true);
@@ -44,14 +47,14 @@ const Header = (props) => {
                     />
                      <Lottie
                         className='button'
-                        initialSegment={[177, 177]}
+                        initialSegment={[0, 177]}
                         animationData={button}
-                        autoplay={false}
-                        loop={false}
+                        autoplay={true}
+                        loop={true}
                         speed={1}
                         
                         onClick={handleSubmit}
-                        lottieRef={lottieRef}
+                        ref={lottieRef}
                       
                     />
                    

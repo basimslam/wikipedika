@@ -9,7 +9,8 @@ const Card = (props) => {
         return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
       }
     const cardImage = props.images[0];
-    console.log("card image", cardImage); 
+    
+    
     return (
         <div className='card-container'>
             <div className="card">
