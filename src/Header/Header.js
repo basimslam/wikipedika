@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import logo from '../assets/Logo.png';
 import Lottie from 'lottie-react';
 import './Header.css';
@@ -9,9 +9,13 @@ const Header = (props) => {
     const [inputValue, setInputValue] = useState('');
     const [searchClicked, setSearchClicked] = useState(false);
     const lottieRef = useRef();
-
+    useEffect(() => {
+        lottieRef.current.goToAndStop(177, true);
+    }, []);
     const handleSubmit = (e) => {
         
+        lottieRef.current.playSegments([[177,301],[0,177]], true);
+          
         e.preventDefault();
         setSearchClicked(true);
         props.handle(props.input);
@@ -45,7 +49,7 @@ const Header = (props) => {
                     />
                      <Lottie
                         className='button'
-                        initialSegment={[177, 177]}
+                        
                         animationData={button}
                         autoplay={false}
                         loop={false}

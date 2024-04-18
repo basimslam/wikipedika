@@ -54,7 +54,7 @@ function App() {
 
   async function getDetails(topic) {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const detailPrompt = "provide me important details about " + topic + " that will show up in google card when searched. the response should only contain the data in the format title: answer \n title: answer\n. for example, born on: 28 october 2000 \n nation : india \n";
+    const detailPrompt = "provide me important details about " + topic + " that will show up in google card when searched. the response should only contain the data in the format title: answer \n title: answer\n. for example, born on: 28 october 2000 \n nation : india \n. No need to mention title and answer";
     const detailStream = await model.generateContentStream(detailPrompt);
     const sdetails = (await detailStream.response).candidates[0].content.parts[0].text.replace(/\*/g, '');;
     const newDetails = sdetails.split("\n");
@@ -69,7 +69,7 @@ function App() {
       const dropPrompt = "Imagine you are wikipedia. Provide me with subtitles for the topic " + topic + ".Just titles are enough, No need of numbers. total number of titles should be between 7 and 15. the response should be comma seperated titles";
       const subtitlesStream = await model.generateContentStream(dropPrompt);
       const subtitles = (await subtitlesStream.response).candidates[0].content.parts[0].text;
-      const titles = subtitles.split(/[^a-zA-Z0-9\s']+/).filter(title => title.length > 0);
+      const titles = subtitles.split(/[^a-zA-Z0-9\s']+/).filter(title => title.trim().length > 0);
       console.log(titles);
       setDropResult(titles);
     } catch (error) {
