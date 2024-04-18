@@ -1,15 +1,17 @@
 .dropdown{
     position: relative;
-    left: 22vw;
+    left: 23.5vw;
     color: white;
     padding: 20px;
     border-radius: 8px;
     white-space: pre-line;
+    display: flex;
+    flex-direction: row;
     
   }
   
   
-  .subtitle{
+  .dd-title{
     display: flex;
     flex-direction: column;
     font-family: roboto;
@@ -47,4 +49,37 @@
   top: -0.5vh;
   width: 43vw;
   
+}
+.popup-container{
+  display: flex;
+
+}
+.popup-button{
+  color: black;
+  background-color: #6CBB09;
+  margin: 0.25vw;
+  padding: 0.25vw;
+  padding-left: 0.25vw;
+  padding-right: 0.25vw;
+  border-radius: 10px;
+  font-family: roboto;
+  font-weight: 800;
+  cursor: pointer;
+}
+.popup-button:hover{
+  background-color: #8FFF00;
+}
+.alert {
+  position: fixed;
+  font-family: roboto;
+  font-weight: 800;
+  bottom: 20px; /* Adjust the distance from the bottom as needed */
+  left: 46%;
+  transform: translateX(-50%);
+  background-color: #B4B4B4;
+  color: black;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 999; /* Ensure it appears above other content */
 }

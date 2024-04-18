@@ -11,10 +11,10 @@ const Header = (props) => {
     const lottieRef = useRef();
 
     const handleSubmit = (e) => {
-        lottieRef.current.play();
+        
         e.preventDefault();
         setSearchClicked(true);
-        props.handle(inputValue);
+        props.handle(props.input);
     };
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -24,7 +24,7 @@ const Header = (props) => {
    
 
     const handleChange = (event) => {
-        setInputValue(event.target.value);
+        props.setInput(event.target.value);
     };
     
     return (
@@ -33,11 +33,12 @@ const Header = (props) => {
                 <img src={logo} alt="logo" className="logo" />
                 <div className="search-bar-container">
                     <input 
+                        id='search-input'
                         className="search-input" 
                         autoComplete='off' 
                         placeholder='Search Here' 
                         type="text" 
-                        value={inputValue}  
+                        value={props.input}  
                         name="query" 
                         onChange={handleChange}
                         onKeyDown={handleKeyDown}

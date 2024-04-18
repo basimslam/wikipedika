@@ -15,9 +15,10 @@ function App() {
   const [details, setDetails] = useState([]);
   const [searchClicked, setSearchClicked] = useState(false);
   const [images, setImages] = useState([]);
+  const [input, setInput] = useState('');
   
   async function getImages(topic) {
-    const apiKey = 'AIzaSyCIh8QGy02-rxK9UgYuPzR5lHXE0TjS8XY';
+    const apiKey = 'AIzaSyDwKvy5ZXaISE4qnaiwDzYEif_Lx1LGx2A';
     const query = topic;
     const cx = '217c23a6ffe4c4dd4';
     const searchType = 'image'; // Add this parameter
@@ -55,7 +56,7 @@ function App() {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     const detailPrompt = "provide me important details about " + topic + " that will show up in google card when searched. the response should only contain the data in the format title: answer \n title: answer\n. for example, born on: 28 october 2000 \n nation : india \n";
     const detailStream = await model.generateContentStream(detailPrompt);
-    const sdetails = (await detailStream.response).candidates[0].content.parts[0].text;
+    const sdetails = (await detailStream.response).candidates[0].content.parts[0].text.replace(/\*/g, '');;
     const newDetails = sdetails.split("\n");
     const res = [];
     newDetails.map((detail) => { res.push(detail.split(":")) });
@@ -65,7 +66,7 @@ function App() {
   async function getSubtitles(topic) {
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-      const dropPrompt = "Imagine you are wikipedia. Provide me with subtitles for the topic " + topic + ".Just titles are enough. total number of titles should be between 7 and 15. the response should be comma seperated titles";
+      const dropPrompt = "Imagine you are wikipedia. Provide me with subtitles for the topic " + topic + ".Just titles are enough, No need of numbers. total number of titles should be between 7 and 15. the response should be comma seperated titles";
       const subtitlesStream = await model.generateContentStream(dropPrompt);
       const subtitles = (await subtitlesStream.response).candidates[0].content.parts[0].text;
       const titles = subtitles.split(/[^a-zA-Z0-9\s']+/).filter(title => title.length > 0);
@@ -78,6 +79,8 @@ function App() {
   async function handleInput(inputValue) {
     
     setData("loading");
+    window.scrollTo(0, 0);
+    setInput(inputValue);
     setTopic(inputValue);
     
     getDetails(inputValue);
@@ -94,11 +97,11 @@ function App() {
         const words = paragraph.split(/\s+/);
         for (const word of words) {
           text += word + ' ';
-          setData(text.trim());
+          setData(text.trim().replace(/\*/g, ''));
           await new Promise(resolve => setTimeout(resolve, 15));
         }
         text += '\n';
-        setData(text.trim());
+        setData(text.trim().replace(/\*/g, ''));
       }
       text = text.slice(0, -2);
     }
@@ -107,10 +110,10 @@ function App() {
   
   return (
     <div className="App">
-      <Header handle={handleInput} />
+      <Header handle={handleInput} input={input} setInput = {setInput}/>
       <div className='body'>
-        <Main data={data} titles={dropResult} details = {details} topic = {topic} images={images}/>
-        <Dropdown topic={topic} dropResult={dropResult} genAI={genAI}/>
+        <Main handleInput={handleInput} data={data} titles={dropResult} details = {details} topic = {topic} images={images}/>
+        {(data != "loading") &&<Dropdown handleInput={handleInput} topic={topic} dropResult={dropResult} genAI={genAI}/>}
       </div>
     
     </div>
