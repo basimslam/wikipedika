@@ -6,24 +6,32 @@ import { useState } from 'react';
 import button from '../assets/button.json';
 import headerline from '../assets/header-line.svg';
 const Header = (props) => {
-    const [inputValue, setInputValue] = useState('');
-    const [searchClicked, setSearchClicked] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const lottieRef = useRef();
     useEffect(() => {
         lottieRef.current.goToAndStop(177, true);
     }, []);
     const handleSubmit = (e) => {
-        if(!props.isProcessing){
+        if(!props.isProcessing)
+        {
         lottieRef.current.playSegments([[177,301],[0,177]], true);
           
         e.preventDefault();
-        setSearchClicked(true);
-        props.handle(props.input);}
+
+        props.handle(props.input);
+        }
+        else{
+            setIsLoading(true);
+            setTimeout(() => {
+              setIsLoading(false);
+            }, 2000);
+        }
     };
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
           handleSubmit(event);
         }
+        
       };
    
 
@@ -68,6 +76,9 @@ const Header = (props) => {
                     <h3>Team</h3>
                     <h3>About</h3>
                 </div>
+                {isLoading && (
+                        <div className="alert">Content Generation in Progress!</div>
+                    )}
             </div>
             <img src={headerline} className='headerline' />
         </header>
