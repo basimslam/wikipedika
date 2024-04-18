@@ -28,9 +28,9 @@ const Header = (props) => {
    
 
     const handleChange = (event) => {
-        if(!props.isProcessing){
+        
         props.setInput(event.target.value);
-        }
+        
     };
     
     return (
