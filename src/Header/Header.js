@@ -13,12 +13,12 @@ const Header = (props) => {
         lottieRef.current.goToAndStop(177, true);
     }, []);
     const handleSubmit = (e) => {
-        
+        if(!props.isProcessing){
         lottieRef.current.playSegments([[177,301],[0,177]], true);
           
         e.preventDefault();
         setSearchClicked(true);
-        props.handle(props.input);
+        props.handle(props.input);}
     };
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -28,7 +28,9 @@ const Header = (props) => {
    
 
     const handleChange = (event) => {
+        if(!props.isProcessing){
         props.setInput(event.target.value);
+        }
     };
     
     return (

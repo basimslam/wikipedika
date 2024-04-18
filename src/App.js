@@ -13,10 +13,12 @@ function App() {
   const [topic, setTopic] = useState(null);
   const [dropResult, setDropResult] = useState([]);
   const [details, setDetails] = useState([]);
-  const [searchClicked, setSearchClicked] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [images, setImages] = useState([]);
   const [input, setInput] = useState('');
   
+  
+
   async function getImages(topic) {
     const apiKey = 'AIzaSyDwKvy5ZXaISE4qnaiwDzYEif_Lx1LGx2A';
     const query = topic;
@@ -53,6 +55,7 @@ function App() {
   
 
   async function getDetails(topic) {
+    
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     const detailPrompt = "provide me important details about " + topic + " that will show up in google card when searched. the response should only contain the data in the format title: answer \n title: answer\n. for example, born on: 28 october 2000 \n nation : india \n. No need to mention title and answer";
     const detailStream = await model.generateContentStream(detailPrompt);
@@ -62,8 +65,10 @@ function App() {
     newDetails.map((detail) => { res.push(detail.split(":")) });
     
     setDetails(res);
+    
   }
   async function getSubtitles(topic) {
+    
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-pro" });
       const dropPrompt = "Imagine you are wikipedia. Provide me with subtitles for the topic " + topic + ".Just titles are enough, No need of numbers. total number of titles should be between 7 and 15. the response should be comma seperated titles";
@@ -75,9 +80,10 @@ function App() {
     } catch (error) {
       console.error("Error generating subtitles:", error);
     }
+    
   }
   async function handleInput(inputValue) {
-    
+    setIsProcessing(true);
     setData("loading");
     window.scrollTo(0, 0);
     setInput(inputValue);
@@ -91,6 +97,7 @@ function App() {
     const result = await model.generateContentStream(prompt);
     let text = '';
     for await (const chunk of result.stream) {
+      
       const chunkText = chunk.text();
       const paragraphs = chunkText.split('\n');
       for (const paragraph of paragraphs) {
@@ -105,12 +112,13 @@ function App() {
       }
       text = text.slice(0, -2);
     }
-    setSearchClicked(true);
+      
+    setIsProcessing(false);
   }
   
   return (
     <div className="App">
-      <Header handle={handleInput} input={input} setInput = {setInput}/>
+      <Header handle={handleInput} input={input} setInput = {setInput} isProcessing={isProcessing}/>
       <div className='body'>
         <Main handleInput={handleInput} data={data} titles={dropResult} details = {details} topic = {topic} images={images}/>
         {(data != "loading") &&<Dropdown handleInput={handleInput} topic={topic} dropResult={dropResult} genAI={genAI}/>}
