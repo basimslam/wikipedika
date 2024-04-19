@@ -20,7 +20,7 @@ function App() {
   
 
   async function getImages(topic) {
-    const apiKey = 'AIzaSyDwKvy5ZXaISE4qnaiwDzYEif_Lx1LGx2A';
+    const apiKey = 'AIzaSyD91xaZ6DES4MDeafyEwWYXeRKAlefdHUE';
     const query = topic;
     const cx = '217c23a6ffe4c4dd4';
     const searchType = 'image'; // Add this parameter
@@ -97,7 +97,6 @@ function App() {
     const result = await model.generateContentStream(prompt);
     let text = '';
     for await (const chunk of result.stream) {
-      
       const chunkText = chunk.text();
       const paragraphs = chunkText.split('\n');
       for (const paragraph of paragraphs) {
