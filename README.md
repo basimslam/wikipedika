@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Wikipedika - A Self Generating Wikipedia
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Wikipedika is a small project that leverages the power of Large Language Models (LLMs) and generative models to create a self-generating Wikipedia-like platform. With Wikipedika, users can instantly generate Wikipedia like pages in real-time on any topic of interest.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Real-time Generation**: Wikipedika generates Wikipedia-like pages instantly, providing users with up-to-date information on any topic.
+- **Quick Information**: Users can access quick summaries and key information on searched topics without the need to navigate through lengthy articles.
+- **Visual Media Support**: Wikipedika incorporates imagesto enhance the user experience and provide comprehensive information.
+- **Interactive Interface**: The user-friendly interface allows for seamless navigation and exploration of generated content.
+- **Hyperlink Support**: We have implemented the support to search for words present in the page by selecting them and clicking the search button. This feature works synonymous to the hyperlink support in actual wikipedia
 
-### `npm start`
+## How It Works
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Wikipedika utilizes advanced language models and generative algorithms to dynamically generate Wikipedia-like pages. When a user searches for a topic, the system retrieves relevant information from various sources and synthesizes it into a coherent and informative page. The generated content is continuously updated to reflect the latest developments and changes in the topic.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+To get started with Wikipedika, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository to your local machine.
+2. Run the application and navigate to the homepage.
+3. Use the search functionality to explore different topics and generate Wikipedia-like pages instantly.
 
-### `npm run build`
+## Contributing
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Contributions to Wikipedika are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request. For major changes, please discuss them with the maintainers before proceeding.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code for both personal and commercial purposes.
 
-### `npm run eject`
+## Acknowledgements
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Wikipedika would not have been possible without the contributions of the open-source community and the advancements in natural language processing and generative modeling technologies. We would like to express our gratitude to all the individuals and organizations involved in making this project a reality.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contact
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+For any inquiries or feedback regarding Wikipedika, please contact [basimaslam97@gmail.com](mailto:basimaslam97@gmail.com). We appreciate your interest and support!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*Disclaimer: Wikipedika is a project developed for demonstration purposes only. The generated content may not always be accurate or up-to-date, and should not be considered a replacement for official Wikipedia articles.*
