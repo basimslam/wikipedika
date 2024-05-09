@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import Contents from './Main/Contents/Contents';
 
-const genAI = new GoogleGenerativeAI("AIzaSyDOpmIxIFM3ik7MPGpXgdFkLST_HCU28vo");
+const genAI = new GoogleGenerativeAI("AIzaSyCOIhqqQSBu6xrL382iMFEFidpx6mXBiSA");
 
 function App() {
   const [data, setData] = useState("Search to display information");
