@@ -7,7 +7,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import Contents from './Main/Contents/Contents';
 
 
-const genAI = new GoogleGenerativeAI(process.env.REACT_APP_API_KEY );
+const genAI = new GoogleGenerativeAI('AIzaSyD91xaZ6DES4MDeafyEwWYXeRKAlefdHUE');
 
 function App() {
   const [data, setData] = useState("Search to display information");
@@ -21,7 +21,7 @@ function App() {
   
 
   async function getImages(topic) {
-    const apiKey = process.env.REACT_APP_SEARCH_KEY;
+    const apiKey = 'AIzaSyAZnTQrOAMJ3nvcAzGW_I73_HiO9z9Exbs';
     const query = topic;
     const cx = '217c23a6ffe4c4dd4';
     const searchType = 'image'; // Add this parameter
