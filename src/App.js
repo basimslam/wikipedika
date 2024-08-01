@@ -6,7 +6,8 @@ import React, { useState, useEffect } from 'react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import Contents from './Main/Contents/Contents';
 
-const genAI = new GoogleGenerativeAI("AIzaSyCOIhqqQSBu6xrL382iMFEFidpx6mXBiSA");
+
+const genAI = new GoogleGenerativeAI(process.env.REACT_APP_API_KEY );
 
 function App() {
   const [data, setData] = useState("Search to display information");
@@ -20,7 +21,7 @@ function App() {
   
 
   async function getImages(topic) {
-    const apiKey = 'AIzaSyD91xaZ6DES4MDeafyEwWYXeRKAlefdHUE';
+    const apiKey = process.env.REACT_APP_SEARCH_KEY;
     const query = topic;
     const cx = '217c23a6ffe4c4dd4';
     const searchType = 'image'; // Add this parameter
@@ -56,7 +57,7 @@ function App() {
 
   async function getDetails(topic) {
     
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
     const detailPrompt = "provide me important details about " + topic + " that will show up in google card when searched. the response should only contain the data in the format title: answer \n title: answer\n. for example, born on: 28 october 2000 \n nation : india \n. No need to mention title and answer";
     const detailStream = await model.generateContentStream(detailPrompt);
     const sdetails = (await detailStream.response).candidates[0].content.parts[0].text.replace(/\*/g, '');;
@@ -70,7 +71,7 @@ function App() {
   async function getSubtitles(topic) {
     
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
       const dropPrompt = "Imagine you are wikipedia. Provide me with subtitles for the topic " + topic + ".Just titles are enough, No need of numbers. total number of titles should be between 7 and 15. the response should be comma seperated titles";
       const subtitlesStream = await model.generateContentStream(dropPrompt);
       const subtitles = (await subtitlesStream.response).candidates[0].content.parts[0].text;
@@ -92,7 +93,7 @@ function App() {
     getDetails(inputValue);
     getSubtitles(inputValue);
     getImages(inputValue);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
     const prompt = "Give a long summary about " + inputValue + " in pure text with strictly no headings. minimum 6 paragraphs should be there";
     const result = await model.generateContentStream(prompt);
     let text = '';
